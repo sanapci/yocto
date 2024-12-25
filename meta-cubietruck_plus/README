@@ -1,0 +1,46 @@
+This README file contains information on the contents of the meta-cubietruck_plus layer.
+
+Please see the corresponding sections below for details.
+
+Dependencies
+============
+
+  URI: <first dependency>
+  branch: <branch name>
+
+  URI: <second dependency>
+  branch: <branch name>
+
+  .
+  .
+  .
+
+Patches
+=======
+
+Please submit any patches against the meta-cubietruck_plus layer to the xxxx mailing list (xxxx@zzzz.org)
+and cc: the maintainer:
+
+Maintainer: Elek, David <david.elek.96@gmail.com>
+
+Table of Contents
+=================
+
+  I. Adding the meta-cubietruck_plus layer to your build
+ II. Build
+
+
+I. Adding the meta-cubietruck_plus layer to your build
+=================================================
+
+Run `bitbake-layers add-layer meta-cubietruck_plus'
+
+II. Build
+=========
+
+Run the 'bitbake core-image-base' to get a console only image.
+
+III. Create SD-Card image
+=========================
+
+Run 'wic create sunxi-sdcard-image -e core-image-base' command to create a partitioned image for SD-Card

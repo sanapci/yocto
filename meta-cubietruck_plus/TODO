@@ -1,0 +1,43 @@
+rfkill unblock 1
+bluetoothctl power on
+
+bluetoothctl scan on
+hcitool scan
+
+....
+
+RPI_EXTRA_CONFIG
+/boot/config.txt
+dtparam=
+audio=on ?
+hdmi_ignore_hotplug=1
+ignore_lcd=1
+
+
+Auto root login
+Enable BT on boot
+Disable HDMI detection on boot, stops boot process..
+Disable HDMI output (above)
+Create BT A2DP sink
+Redirect sound to Jack 3.5
+Establish WiFi connection (SSH server!)
+https://gist.github.com/zw/3349078
+https://meta-raspberrypi.readthedocs.io/en/latest/readme.html
+
+
+sudo nano /etc/systemd/system/rfkill-unblock-wifi.service
+
+[Unit]
+Description=RFKill-Unblock WiFi Devices
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/rfkill unblock wifi
+ExecStop=
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+
+sudo systemctl enable rfkill-unblock-wifi.service
+sudo systemctl start rfkill-unblock-wifi.service
